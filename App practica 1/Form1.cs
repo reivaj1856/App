@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_practica_1.UsuariosApp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +35,7 @@ namespace App_practica_1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Registro r1 = new Registro();
+            Registro r1 = new Registro(1,0);
             r1.ShowDialog();
         }
 
@@ -46,13 +47,27 @@ namespace App_practica_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Interfaz i1 = new Interfaz();
             Conexionbd b1 = new Conexionbd();
             string cuenta = textBox1.Text;
             string contraseña = textBox2.Text;
             if (b1.evaluarUsuario(cuenta, contraseña))
             {
-                i1.ShowDialog();
+                Usuario us = b1.getUsuario(cuenta,contraseña);
+                if (us.RolID==3)
+                {
+                    Interfaz i1 = new Interfaz(us);
+                    i1.ShowDialog();
+                }
+                if (us.RolID==1)
+                {
+                    Venta v1 = new Venta();
+                    v1.ShowDialog();
+                }
+                if (us.RolID == 2)
+                {
+                    VentaUsuario v2= new VentaUsuario();
+                    v2.ShowDialog();
+                }
             }
             else {
                 MessageBox.Show("Usuario o contraseña incorrecta");

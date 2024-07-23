@@ -58,7 +58,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::App_practica_1.Properties.Resources.login;
-            this.pictureBox3.Location = new System.Drawing.Point(42, 109);
+            this.pictureBox3.Location = new System.Drawing.Point(50, 100);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(251, 242);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

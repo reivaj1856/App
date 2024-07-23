@@ -26,5 +26,18 @@ namespace App_practica_1
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Conexionbd b1 = new Conexionbd();
+            string contraRec=b1.recuperarContraseña(textBox1.Text);
+            if (contraRec != "")
+            {
+                MessageBox.Show("Su contraseña es: " + contraRec);
+            }
+            else {
+                MessageBox.Show("Usuario no existe");
+            }
+        }
     }
 }

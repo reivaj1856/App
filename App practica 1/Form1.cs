@@ -47,7 +47,16 @@ namespace App_practica_1
         private void button1_Click(object sender, EventArgs e)
         {
             Interfaz i1 = new Interfaz();
-            i1.ShowDialog();
+            Conexionbd b1 = new Conexionbd();
+            string cuenta = textBox1.Text;
+            string contraseña = textBox2.Text;
+            if (b1.evaluarUsuario(cuenta, contraseña))
+            {
+                i1.ShowDialog();
+            }
+            else {
+                MessageBox.Show("Usuario o contraseña incorrecta");
+            }
         }
     }
 }

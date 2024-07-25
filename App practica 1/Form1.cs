@@ -13,9 +13,11 @@ namespace App_practica_1
 {
     public partial class Form1 : Form
     {
+        private Controlador c1;
         public Form1()
         {
             InitializeComponent();
+            c1=new Controlador();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -47,31 +49,7 @@ namespace App_practica_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Conexionbd b1 = new Conexionbd();
-            string cuenta = textBox1.Text;
-            string contraseña = textBox2.Text;
-            if (b1.evaluarUsuario(cuenta, contraseña))
-            {
-                Usuario us = b1.getUsuario(cuenta,contraseña);
-                if (us.RolID==3)
-                {
-                    Interfaz i1 = new Interfaz(us);
-                    i1.ShowDialog();
-                }
-                if (us.RolID==1)
-                {
-                    Venta v1 = new Venta();
-                    v1.ShowDialog();
-                }
-                if (us.RolID == 2)
-                {
-                    VentaUsuario v2= new VentaUsuario();
-                    v2.ShowDialog();
-                }
-            }
-            else {
-                MessageBox.Show("Usuario o contraseña incorrecta");
-            }
+            c1.IniciarSesion(textBox1.Text,textBox2.Text);
         }
     }
 }

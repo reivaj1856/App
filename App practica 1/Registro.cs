@@ -14,12 +14,11 @@ namespace App_practica_1
 {
     public partial class Registro : Form
     {
-        private Conexionbd b1;
+        private Controlador controlador;
         private int numero;
         public Registro(int num,int num1)
         {
             numero = num1;
-            b1 = new Conexionbd();
             InitializeComponent();
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             if (num==1)
@@ -54,7 +53,7 @@ namespace App_practica_1
                 int num = comboBox2.SelectedIndex + 1;
                 if (nombre != "" && apellido != "" && email != "" && contraseña != "")
                 {
-                    b1.AgregarUsuario(nombre, apellido, email, contraseña, num);
+                    controlador.agregarUsuario(nombre, apellido, email, contraseña, num);
                     Close();
                 }
                 else

@@ -17,15 +17,14 @@ namespace App_practica_1
     public partial class Interfaz : Form
     {
         private Usuario usuario;
-        private Conexionbd b1;
+        private Controlador controlador;
         public Interfaz(Usuario us)
         {
             InitializeComponent();
             usuario = us;
-            b1 = new Conexionbd();
             label6.Text = usuario.Nombre;
             label7.Text = usuario.Email;
-            ArrayList list = b1.getUsuarios();
+            ArrayList list = controlador.getDatos();
             foreach (Usuario usuario in list)
             {
                 string[] row = new string[]
@@ -59,7 +58,7 @@ namespace App_practica_1
 
                 // Obtén el valor de las celdas en la fila seleccionada
                 int usuarioID = int.Parse(selectedRow.Cells[0].Value.ToString());
-                Usuario us=b1.getUsuarioID(usuarioID);
+                Usuario us = controlador.getUsuarioID(usuarioID);
                 Registro r1 = new Registro(0,us.RolID);
                 string nombre = us.Nombre;
                 string apellido = us.Apellido;
@@ -81,9 +80,8 @@ namespace App_practica_1
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
-                // Obtén el valor de las celdas en la fila seleccionada
                 int usuarioID = int.Parse(selectedRow.Cells[0].Value.ToString());
-                Usuario us = b1.getUsuarioID(usuarioID);
+                Usuario us = controlador.getUsuarioID(usuarioID);
                 
             }
             else

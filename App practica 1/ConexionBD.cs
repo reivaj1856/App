@@ -15,7 +15,8 @@ namespace App_practica_1
     {
         SqlConnection conex = new SqlConnection();
 
-        string cadenaConexion = "Data Source= DESKTOP-VSFDTI4\\SQLSERVEREXPRESS; Initial Catalog=TiendaRopaUsada; Integrated Security = True";
+        //string cadenaConexion = "Data Source= DESKTOP-VSFDTI4\\SQLSERVEREXPRESS; Initial Catalog=TiendaRopaUsada; Integrated Security = True";
+        string cadenaConexion = "Data Source= DESKTOP-D46MFDH\\SQLEXPRESS; Initial Catalog=TiendaRopaUsada; Integrated Security = True";
 
         public bool evaluarUsuario(string name, string pass)
         {
@@ -157,7 +158,7 @@ namespace App_practica_1
                         string contraseña = reader.GetString(4);
                         int rolID = reader.GetInt32(5);
                         list.Add(new Usuario(usuarioID, nombre, apvfellido, email, contraseña, rolID));
-
+                        
                     }
                 }
                 conex.Close();
